@@ -1,7 +1,6 @@
 class Letopis < Formula
   desc "Source-linked project memory for AI coding agents"
   homepage "https://github.com/zdkadiev/letopis"
-  version "0.1.0"
   license "MIT"
 
   depends_on "git" => :test
