@@ -3,7 +3,7 @@ class Letopis < Formula
   homepage "https://github.com/zdkadiev/letopis"
   license "MIT"
 
-  depends_on "git" => :test
+  uses_from_macos "git" => :test
 
   on_macos do
     on_arm do
