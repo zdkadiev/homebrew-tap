@@ -1,0 +1,35 @@
+name: Test Homebrew installation
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  install:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [macos-15, macos-15-intel, ubuntu-22.04, ubuntu-22.04-arm]
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: Homebrew/actions/setup-homebrew@c262868c096d909fc278daa87ed9772967331ea3
+        with:
+          stable: true
+      - name: Install and exercise the formula
+        env:
+          HOMEBREW_NO_AUTO_UPDATE: '1'
+          HOMEBREW_NO_INSTALL_CLEANUP: '1'
+        run: |
+          brew trust --tap zdkadiev/tap
+          brew readall --os=all --arch=all zdkadiev/tap
+          brew install --only-dependencies --include-test zdkadiev/tap/letopis
+          brew install zdkadiev/tap/letopis
+          brew test zdkadiev/tap/letopis
+          letopis --version
