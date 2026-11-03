@@ -7,23 +7,23 @@ class Letopis < Formula
 
   on_macos do
     on_arm do
-      url "https://github.com/zdkadiev/letopis/releases/download/v0.1.1/letopis-0.1.1-aarch64-apple-darwin.tar.gz"
-      sha256 "622bfa94e9c92ffb0ce2df06585908d09e0f9c54d50c62b6ba38b6904285b494"
+      url "https://github.com/zdkadiev/letopis/releases/download/v0.1.2/letopis-0.1.2-aarch64-apple-darwin.tar.gz"
+      sha256 "16845155ac154fbf2e9dd6386ffac6c15ec022d3d38a86dc96079c55b2561867"
     end
     on_intel do
-      url "https://github.com/zdkadiev/letopis/releases/download/v0.1.1/letopis-0.1.1-x86_64-apple-darwin.tar.gz"
-      sha256 "02add7198ef5bd4aa405aafaf634e71d09c6815aceb4b1a08b38c15a8e37bb34"
+      url "https://github.com/zdkadiev/letopis/releases/download/v0.1.2/letopis-0.1.2-x86_64-apple-darwin.tar.gz"
+      sha256 "c8f33b8bf2b41c1ce72762b4895ca640b9979f3773bf408e1981e362c2db8043"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/zdkadiev/letopis/releases/download/v0.1.1/letopis-0.1.1-aarch64-unknown-linux-gnu.tar.gz"
-      sha256 "46ac8243c4a3652b3c43439de2a281982d2718026a4450dd5cf31c3cad66add8"
+      url "https://github.com/zdkadiev/letopis/releases/download/v0.1.2/letopis-0.1.2-aarch64-unknown-linux-gnu.tar.gz"
+      sha256 "104914defb322ed5e1cc1c768d9f2103c764633b226e2ab30d31ed65920e9434"
     end
     on_intel do
-      url "https://github.com/zdkadiev/letopis/releases/download/v0.1.1/letopis-0.1.1-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "66dcf8d16b58cdce51183aba2529804eaf3075593d35309c7d214710f01b6bbb"
+      url "https://github.com/zdkadiev/letopis/releases/download/v0.1.2/letopis-0.1.2-x86_64-unknown-linux-gnu.tar.gz"
+      sha256 "ca38346f2d842ed2c277ac3e5cb74dda441e7c4aa4227c4c2fabfd0f0da57075"
     end
   end
 
@@ -50,6 +50,6 @@ class Letopis < Formula
     assert_empty checked.fetch("result").fetch("errors")
     assert_equal true, searched["ok"]
     assert_equal ["knowledge.md"], searched.fetch("result").map { |link| link.fetch("element_id") }
-    assert_equal "letopis 0.1.1\n", shell_output("#{bin}/letopis --version")
+    assert_equal "letopis 0.1.2\n", shell_output("#{bin}/letopis --version")
   end
 end
